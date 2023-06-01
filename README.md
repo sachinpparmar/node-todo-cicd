@@ -48,3 +48,35 @@ https://docs.google.com/document/d/1qos4eUfY4vZojjnZLSGw8D3A46Yy2r42uiZPyPxL17A/
     cat /var/lib/jenkins/secrets/initialAdminPassword
       sudo cat /var/lib/jenkins/secrets/initialAdminPassword
   
+  cd /var/lib/jenkins/workspace/todo-node-app     (we will go after run the job on jenkins)
+  
+  sudo apt install nodejs
+  sudo apt install npm
+  
+  sudo apt install npm
+
+
+  npm install
+
+  node app.js      (for run the app we run this command)
+  
+  ## we will run this app using dockerfile  
+  ## so write dockerfile
+  
+  FROM node:12.2.0-alpine
+WORKDIR app
+COPY . .
+RUN npm install
+EXPOSE 8000
+CMD ["node","app.js"]
+
+docker build . -t node-app
+sudo usermod -a -G docker $USER
+docker run -d --name node-todo-app -p 8000:8000 todo-node-app
+
+
+ sudo usermod -a -G docker jenkins
+  systemctl restart jenkins
+  sudo systemctl restart jenkins
+   systemctl status jenkins
+
